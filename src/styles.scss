@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .task-item {
+    @apply inline-flex justify-between bg-white rounded-[8px] h-[56px] w-[100%] py-[16px]
+    px-[14px] mb-[8px] border-[1px] border-transparent border-l-[8px] border-l-[#e3e3e3]
+    cursor-pointer hover:task-hover;
+  }
+
+  .hide-buttons {
+    display: none;
+  }
+
+  .task-item:hover .hide-buttons {
+    display: initial;
+    transition: opacity ease-in-out 0.5s;
+  }
+
+  .container {
+    @apply mx-auto my-0 w-screen max-w-[80%];
+  }
+
+  .create-task-input {
+    @apply w-[276px] mr-[17px] py-[11px] px-[11px] border rounded-[8px] text-[16px] outline-0 focus:border-[#82b6ff] transition duration-300;
+  }
+
+  .create-task-btn {
+    @apply rounded-[8px] text-[16px] text-white transition duration-300 hover:bg-[#82b6ff] inline-flex min-w-[100px] bg-[#2f80ed] items-center min-h-[46px];
+  }
+
+  .article-item {
+    @apply flex flex-col w-[22%] h-[100%];
+  }
+
+  .article-item-card {
+    @apply py-[10px] px-[18px] mb-[16px] text-[18px] rounded-[8px] cursor-default font-bold text-center;
+  }
+
+  .backlog {
+    @apply text-[#6a6a6a] bg-[#e3e3e3]
+  }
+
+  .in-progress {
+    @apply text-[#2f80ed] bg-[#d6e7ff]
+  }
+
+  .done {
+    @apply text-[#65b670] bg-[#d7f9e0]
+  }
+
+  .archive {
+    @apply text-[#c9666c] bg-[#fbe3e3]
+  }
+
+}
+
+@layer utilities {
+  .task-hover {
+    @apply border border-l-[8px] border-[#e3e3e3] transition duration-500 ease-in-out;
+  }
+}

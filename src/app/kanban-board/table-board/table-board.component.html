@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="flex justify-between">
+    <article class="article-item">
+      <h3 class="article-item-card backlog">Backlog</h3>
+      <div *ngIf="cards.length === 0; then emptyBacklog else taskCards">
+      </div>
+
+    </article>
+    <article class="article-item">
+      <h3 class="article-item-card in-progress">In Progress</h3>
+      <div></div>
+    </article>
+    <article class="article-item">
+      <h3 class="article-item-card done">Done</h3>
+      <div></div>
+    </article>
+    <article class="article-item">
+        <h3 class="article-item-card archive relative">Archive</h3>
+        <button class="absolute left-[88.5%]">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15.5374" y="5.16638" width="1.83333" height="14.6667" transform="rotate(45 15.5374 5.16638)" fill="#c9666c"/>
+            <rect x="16.8337" y="15.5372" width="1.83333" height="14.6667" transform="rotate(135 16.8337 15.5372)" fill="#c9666c"/>
+          </svg>
+        </button>
+      <div></div>
+    </article>
+  </div>
+</div>
+
+<ng-template #emptyArticle>
+  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+    <p>Move a card</p>
+  </div>
+</ng-template>
+
+<ng-template #taskCards>
+    <task-card #card *ngFor="let card of cards" [card]="card">{{card}}</task-card>
+</ng-template>
+
+<ng-template #emptyBacklog>
+  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+    <p>No tasks</p>
+  </div>
+</ng-template>
+
+<ng-template #emptyArchive>
+  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+    <p>Archive is empty</p>
+  </div>
+</ng-template>
