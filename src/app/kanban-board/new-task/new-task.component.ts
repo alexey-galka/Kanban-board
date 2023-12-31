@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {NewTaskService} from "../services/new-task.service";
 import {FormsModule} from "@angular/forms";
+import {CreateNewTaskService} from "../services/createNewTask.service";
 
 @Component({
   selector: 'new-task',
@@ -14,10 +14,10 @@ import {FormsModule} from "@angular/forms";
 export class NewTaskComponent {
   taskName: string = '';
   newTaskName: Array<string> = [];
-  constructor(private newTaskService: NewTaskService) {}
+  constructor(private createNewTask: CreateNewTaskService) {}
 
     public onCreateTask(value: string): void {
-      this.newTaskName = this.newTaskService.createTasks(value);
+      this.newTaskName = this.createNewTask.createNewTask(value);
       this.taskName = '';
     }
 }

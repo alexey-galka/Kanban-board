@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from "./header/header.component";
 import {NewTaskComponent} from "./new-task/new-task.component";
-import {TaskCardComponent} from "./task-card/task-card.component";
+import {TaskCardComponent} from "./task/task-card/task-card.component";
 import {TableBoardComponent} from "./table-board/table-board.component";
+import {EditTaskComponent} from "./task/edit-task/edit-task.component";
 
 @Component({
   selector: 'kanban-board',
@@ -12,7 +13,8 @@ import {TableBoardComponent} from "./table-board/table-board.component";
     HeaderComponent,
     NewTaskComponent,
     TaskCardComponent,
-    TableBoardComponent
+    TableBoardComponent,
+    EditTaskComponent
   ],
   styleUrls: ['./kanban-board.component.scss']
 })

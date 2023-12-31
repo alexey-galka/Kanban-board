@@ -1,0 +1,9 @@
+<div *ngIf="isEdited; then editTask else showTask"></div>
+
+<ng-template #editTask>
+  <edit-task [taskName]="task"></edit-task>
+</ng-template>
+
+<ng-template #showTask>
+  <task-card [taskName]="task"></task-card>
+</ng-template>

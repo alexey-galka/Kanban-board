@@ -34,7 +34,7 @@
 </ng-template>
 
 <ng-template #taskCards>
-    <task-card #card *ngFor="let card of cards" [card]="card">{{card}}</task-card>
+    <task *ngFor="let card of cards" [task]="card">{{card}}</task>
 </ng-template>
 
 <ng-template #emptyBacklog>

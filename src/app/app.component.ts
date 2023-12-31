@@ -11,5 +11,5 @@ import {KanbanBoardComponent} from "./kanban-board/kanban-board.component";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'kanban-board';
+
 }

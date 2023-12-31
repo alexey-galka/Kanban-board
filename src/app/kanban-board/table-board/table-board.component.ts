@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {TaskCardComponent} from "../task-card/task-card.component";
-import {NewTaskService} from "../services/new-task.service";
+import {TaskCardComponent} from "../task/task-card/task-card.component";
 import {NgForOf, NgIf} from "@angular/common";
+import {CreateNewTaskService} from "../services/createNewTask.service";
+import {TaskComponent} from "../task/task.component";
 
 @Component({
   selector: 'table-board',
@@ -10,17 +11,18 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     TaskCardComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    TaskComponent,
   ],
   styleUrls: ['./table-board.component.scss']
 })
 export class TableBoardComponent implements OnInit {
   public cards: Array<string> = [];
-  constructor(private newTaskService: NewTaskService) {}
+  constructor(private createNewTask: CreateNewTaskService) {}
 
-
-  ngOnInit() {
-    this.newTaskService.receiveTasks().subscribe((card: string[]) => this.cards = card);
+  ngOnInit(): void {
+    this.createNewTask.getTasks().subscribe((cards: string[]) => this.cards = cards);
+    console.log(this.cards)
   }
 
 }
