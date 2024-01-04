@@ -1,27 +1,38 @@
-# KanbanBoard
+# Project Task Management Readme
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+This document provides a comprehensive guide to the functionality and user interactions of the Task Management project.
 
-## Development server
+## Adding a Task
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- To add a new task card to the board, follow these steps:
+   1. Enter the task title in the input field.
+   2. Click the "Add" button.
+   3. The new card is added to the end of the "Backlog" list with the entered text.
+   4. The input field is cleared after adding the card to the backlog.
 
-## Code scaffolding
+## Editing a Task
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- To edit a task, use the following steps:
+   1. Hover over the task card to reveal the pencil icon.
+   2. Tasks can be edited only in Backlog stage.
+   3. Click on the pencil icon to focus on the task title for editing.
+   4. Click Done button to save the changes and exit editing mode.
+   5. The entered text is saved in the description.
 
-## Build
+## Moving Tasks
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Tasks can be moved within a column or between columns:
+   1. Lift the card to make it disappear from the column.
+   2. Remaining cards shift to fill the empty space.
+   3. When moving a card, nearby tasks move apart to make room.
+   4. After dropping, the card's left side color aligns with others in the column.
+   6. If a column becomes empty, a gray block with the text "Drag a card here" appears below the column's name.
 
-## Running unit tests
+## Deleting Tasks
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- To delete tasks, follow these instructions:
+   1. Click the "Clear" button to delete all cards in the "Trash" column permanently.
+   2. If the trash is empty, the "Clear" button is disabled.
+   3. A gray block with the message "Trash is empty" appears in the empty trash column.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Feel free to explore and manage your tasks efficiently using this intuitive interface!
