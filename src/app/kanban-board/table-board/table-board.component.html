@@ -4,7 +4,11 @@
 <!--    Backlog-->
     <article class="article-item">
       <h3 class="article-item-card backlog">Backlog</h3>
-      <div class="list" cdkDropList (cdkDropListDropped)="onDrop($event)" cdkDropListConnectedTo="[inProgressList]">
+      <div class="list" cdkDropList
+           #backLogList="cdkDropList"
+           [cdkDropListData]="backlog"
+           (cdkDropListDropped)="onDrop($event)"
+           [cdkDropListConnectedTo]="[inProgressList, doneList, archiveList]">
           @if(backlog.length === 0) {
             <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
               <p>No tasks</p>
@@ -13,18 +17,22 @@
             <task class="task-card" *ngFor="let card of backlog" [task]="card" cdkDrag>{{card}}</task>
           }
       </div>
-
-
     </article>
 
 <!--    In Progress-->
     <article class="article-item">
       <h3 class="article-item-card in-progress">In Progress</h3>
-      <div #inProgressList cdkDropList (cdkDropListDropped)="onDrop($event)" >
+      <div cdkDropList
+           #inProgressList="cdkDropList"
+           [cdkDropListData]="inProgress"
+           (cdkDropListDropped)="onDrop($event)"
+           [cdkDropListConnectedTo]="[backLogList, doneList, archiveList]">
         @if(inProgress.length === 0) {
           <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
             <p>Move a card</p>
           </div>
+        } @else {
+          <task class="task-card" *ngFor="let card of inProgress" [task]="card" cdkDrag>{{card}}</task>
         }
       </div>
     </article>
@@ -32,11 +40,17 @@
 <!--    Done-->
     <article class="article-item">
       <h3 class="article-item-card done">Done</h3>
-      <div cdkDropList (cdkDropListDropped)="onDrop($event)" >
+      <div cdkDropList
+           #doneList="cdkDropList"
+           [cdkDropListData]="done"
+           (cdkDropListDropped)="onDrop($event)"
+           [cdkDropListConnectedTo]="[backLogList, inProgressList, archiveList]">
         @if(done.length === 0) {
         <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
           <p>Move a card</p>
         </div>
+        } @else {
+        <task class="task-card" *ngFor="let card of done" [task]="card" cdkDrag>{{card}}</task>
         }
       </div>
     </article>
@@ -44,17 +58,24 @@
 <!--    Archive-->
     <article class="article-item">
         <h3 class="article-item-card archive relative">Archive</h3>
-        <button class="absolute left-[88.5%]">
+        <button class="absolute left-[88.5%]" (click)="clearArchive()">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="15.5374" y="5.16638" width="1.83333" height="14.6667" transform="rotate(45 15.5374 5.16638)" fill="#c9666c"/>
             <rect x="16.8337" y="15.5372" width="1.83333" height="14.6667" transform="rotate(135 16.8337 15.5372)" fill="#c9666c"/>
           </svg>
         </button>
-      <div cdkDropList (cdkDropListDropped)="onDrop($event)" >
+      <div cdkDropList
+           #archiveList="cdkDropList"
+           [cdkDropListData]="archive"
+           (cdkDropListDropped)="onDrop($event)"
+           [cdkDropListConnectedTo]="[backLogList, inProgressList, doneList]">
+
         @if(archive.length === 0) {
           <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
             <p>Archive is empty</p>
           </div>
+        } @else {
+        <task class="task-card" *ngFor="let card of archive" [task]="card" cdkDrag>{{card}}</task>
         }
       </div>
     </article>

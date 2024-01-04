@@ -34,6 +34,10 @@ export class TableBoardComponent implements OnInit {
     this.dragAndDrop.drop(event);
   }
 
+  clearArchive() {
+    this.archive = [];
+  }
+
   ngOnInit(): void {
     this.createNewTask.getTasks().subscribe((cards: string[]) => this.backlog = cards);
   }

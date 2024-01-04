@@ -37,7 +37,7 @@
   }
 
   .article-item-card {
-    @apply py-[10px] px-[18px] mb-[16px] text-[18px] rounded-[8px] cursor-default font-bold text-center;
+    @apply cursor-default text-center font-bold py-[10px] px-[18px] mb-[16px] text-[18px] rounded-[8px];
   }
 
   .backlog {

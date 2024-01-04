@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {NgIf} from "@angular/common";
-import {FormsModule} from "@angular/forms";
-import {TaskCardComponent} from "../task-card/task-card.component";
-import {EditTaskService} from "../../services/editTask.service";
-import {SaveTaskChangesService} from "../../services/saveTaskChanges.service";
+import { Component, Input } from '@angular/core';
+import { NgIf } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { TaskCardComponent } from "../task-card/task-card.component";
+import { EditTaskService } from "../../services/editTask.service";
+import { SaveTaskChangesService } from "../../services/saveTaskChanges.service";
 
 @Component({
   selector: 'edit-task',
@@ -14,16 +14,17 @@ import {SaveTaskChangesService} from "../../services/saveTaskChanges.service";
     TaskCardComponent
   ],
   templateUrl: './edit-task.component.html',
-  styleUrl: './edit-task.component.scss'
+  styleUrls: ['./edit-task.component.scss']
 })
 
 export class EditTaskComponent {
   @Input() taskName: string = '';
+  newTaskName: string = '';
 
   constructor(private editTask: EditTaskService, private saveTaskChanges: SaveTaskChangesService) {}
 
-  saveChanges(name: string, status: boolean): void {
-    this.saveTaskChanges.saveChanges(name);
+  saveChanges(status: boolean): void {
+    this.saveTaskChanges.saveChanges(this.taskName, this.newTaskName);
     this.editTask.setStatus(status);
   }
 
@@ -31,4 +32,7 @@ export class EditTaskComponent {
     this.editTask.setStatus(status);
   }
 
+  onTaskNameChange(newValue: string) {
+    this.newTaskName = newValue;
+  }
 }

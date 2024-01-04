@@ -1,9 +1,9 @@
 <div class="task-item">
   <div>
-    <input type="text" class="font-light outline-0 border rounded-[8px] w-[98%] focus:border-[#82b6ff] transition duration-300" [(ngModel)]="taskName">
+    <input type="text" class="font-light outline-0 border rounded-[8px] w-[98%] focus:border-[#82b6ff] transition duration-300" [(ngModel)]="newTaskName" (ngModelChange)="onTaskNameChange($event)">
   </div>
-  <div class="hide-buttons inline-flex items-start">
-    <button (click)="saveChanges(taskName, false)">
+  <div class="inline-flex items-start hide-buttons">
+    <button (click)="saveChanges(false)">
       <svg  fill="#000000" width="24px" height="24px" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <path fill="green" d="M13 4.1974q0 .3097-.21677.5265L7.17806 10.329l-1.0529 1.0529q-.21677.2168-.52645.2168-.30968 0-.52645-.2168L4.01935 10.329 1.21677 7.5264Q1 7.3097 1 7t.21677-.5265l1.05291-1.0529q.21677-.2167.52645-.2167.30968 0 .52645.2167l2.27613 2.2839 5.07871-5.0864q.21677-.2168.52645-.2168.30968 0 .52645.2168l1.05291 1.0529Q13 3.8877 13 4.1974z"/>
       </svg>
