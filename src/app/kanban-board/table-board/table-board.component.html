@@ -1,19 +1,47 @@
 <div class="container">
   <div class="flex justify-between">
+
+<!--    Backlog-->
     <article class="article-item">
       <h3 class="article-item-card backlog">Backlog</h3>
-      <div *ngIf="cards.length === 0; then emptyBacklog else taskCards">
+      <div class="list" cdkDropList (cdkDropListDropped)="onDrop($event)" cdkDropListConnectedTo="[inProgressList]">
+          @if(backlog.length === 0) {
+            <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+              <p>No tasks</p>
+            </div>
+          } @else {
+            <task class="task-card" *ngFor="let card of backlog" [task]="card" cdkDrag>{{card}}</task>
+          }
       </div>
 
+
     </article>
+
+<!--    In Progress-->
     <article class="article-item">
       <h3 class="article-item-card in-progress">In Progress</h3>
-      <div></div>
+      <div #inProgressList cdkDropList (cdkDropListDropped)="onDrop($event)" >
+        @if(inProgress.length === 0) {
+          <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+            <p>Move a card</p>
+          </div>
+        }
+      </div>
     </article>
+
+<!--    Done-->
     <article class="article-item">
       <h3 class="article-item-card done">Done</h3>
-      <div></div>
+      <div cdkDropList (cdkDropListDropped)="onDrop($event)" >
+        @if(done.length === 0) {
+        <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+          <p>Move a card</p>
+        </div>
+        }
+      </div>
     </article>
+
+<!--    Archive-->
     <article class="article-item">
         <h3 class="article-item-card archive relative">Archive</h3>
         <button class="absolute left-[88.5%]">
@@ -22,29 +50,14 @@
             <rect x="16.8337" y="15.5372" width="1.83333" height="14.6667" transform="rotate(135 16.8337 15.5372)" fill="#c9666c"/>
           </svg>
         </button>
-      <div></div>
+      <div cdkDropList (cdkDropListDropped)="onDrop($event)" >
+        @if(archive.length === 0) {
+          <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
+            <p>Archive is empty</p>
+          </div>
+        }
+      </div>
     </article>
+
   </div>
 </div>
-
-<ng-template #emptyArticle>
-  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
-    <p>Move a card</p>
-  </div>
-</ng-template>
-
-<ng-template #taskCards>
-    <task *ngFor="let card of cards" [task]="card">{{card}}</task>
-</ng-template>
-
-<ng-template #emptyBacklog>
-  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
-    <p>No tasks</p>
-  </div>
-</ng-template>
-
-<ng-template #emptyArchive>
-  <div class="mb-[8px] rounded-[8px] text-[#d0d0d0] py-[15px] px-[19px] border border-dashed border-[#d0d0d0]">
-    <p>Archive is empty</p>
-  </div>
-</ng-template>

@@ -4,7 +4,7 @@
 
 @layer components {
   .task-item {
-    @apply inline-flex justify-between bg-white rounded-[8px] h-[56px] w-[100%] py-[16px]
+    @apply inline-flex justify-between bg-white rounded-[8px] h-[56px] w-[253px] py-[16px]
     px-[14px] mb-[8px] border-[1px] border-transparent border-l-[8px] border-l-[#e3e3e3]
     cursor-pointer hover:task-hover;
   }
